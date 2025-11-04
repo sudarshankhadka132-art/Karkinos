@@ -1,0 +1,16 @@
+# Node
+web/node_modules
+web/.next
+
+# Python
+__pycache__
+*.pyc
+.env
+
+# Poetry
+api/.venv
+
+# Misc
+.DS_Store
+.idea/
+.vscode/
