@@ -1,67 +1,37 @@
-# Karkinos Oncology Intelligence
+# Karkinos
 
-Karkinos is a monorepo housing the web experience, API, database infrastructure, and ingestion
-utilities for an oncology knowledge platform.
+Karkinos is an intelligence workspace designed to help oncologists stay aligned with the latest evidence, collaborate across multidisciplinary teams, and match patients to the most relevant clinical trials. This first iteration focuses on the **Knowledge Base** feature, enabling clinicians to curate and organize guidelines and research assets from trusted sources.
 
-## Repository Structure
+## Getting started
 
-- `web/` – Next.js 14 + TypeScript frontend styled with Tailwind CSS.
-- `api/` – FastAPI service managed via Poetry with modular routers.
-- `db/` – Docker Compose configuration for Postgres with pgvector and the database schema.
-- `ingestion/` – Python tooling to ingest PDFs, compute embeddings, and upsert vectors.
-
-## Prerequisites
-
-- Docker and Docker Compose
-- Node.js 18+
-- Python 3.11+
-- Poetry (for API dependencies)
-
-## Running the Stack Locally
-
-### 1. Start Postgres + pgvector
+This repository contains a Vite + React single-page application built with TypeScript.
 
 ```bash
-cd db
-docker compose up -d
-```
-
-This seeds the database schema defined in `db/schema.sql`.
-
-### 2. Run the API
-
-```bash
-cd api
-poetry install
-poetry run uvicorn app.main:app --reload
-```
-
-The API is served on `http://127.0.0.1:8000`.
-
-### 3. Run the Web App
-
-```bash
-cd web
 npm install
 npm run dev
 ```
 
-The Next.js application is served on `http://127.0.0.1:3000`.
+The development server runs on [http://localhost:5173](http://localhost:5173).
 
-### 4. (Optional) Run Ingestion Utilities
+> **Note:** Package installation requires access to the npm registry. In restricted environments you can still explore the codebase even if dependencies cannot be downloaded.
 
-Install the ingestion requirements and execute your ingestion workflows pointing to the running
-Postgres instance.
+## Feature overview
 
-```bash
-cd ingestion
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python -m ingestion.ingest  # implement CLI entrypoints as needed
-```
+### Knowledge Base (v0.1)
 
-## Continuous Integration
+- **Evidence sources**: Browse NCCN, ASCO, ESMO, and PubMed Central collections presented as minimal, orange-accented cards.
+- **Cancer libraries**: Drill down into cancer types within each source to view summaries and supported ingestion methods.
+- **Document workspace**: Upload internal PDFs or simulate API captures to build a tailored guideline repository. Documents persist locally in the browser via `localStorage` for quick iteration.
+- **API sync indicator**: Cancer libraries with future API integrations are highlighted, establishing the path toward automated ingestion.
 
-GitHub Actions workflow (`.github/workflows/ci.yml`) installs dependencies and runs tests for both
-web and API packages to ensure the scaffold remains healthy.
+### Design foundations
+
+- Minimalist, white-heavy layout with soft gradients and orange accenting inspired by Apple-esque clarity.
+- Placeholder Karkinos logomark for initial branding alignment.
+- Responsive adjustments for smaller viewports while preserving focus on evidence curation workflows.
+
+## Next steps
+
+- Wire the upload workspace to backend storage and document processing pipelines.
+- Expand beyond knowledge base: tumor board collaboration tools and clinical trial matching.
+- Integrate real NCCN / ASCO / ESMO / PMC APIs and scheduling for continuous updates.
