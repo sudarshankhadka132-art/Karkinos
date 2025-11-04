@@ -2,31 +2,37 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#ff6b35',
-          50: '#fff5f0',
-          100: '#ffe8db',
-          200: '#ffd0b7',
-          300: '#ffb089',
-          400: '#ff8b57',
-          500: '#ff6b35',
-          600: '#f15a23',
-          700: '#d7441a',
-          800: '#aa3418',
-          900: '#872c16'
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12'
         }
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif']
-      },
       spacing: {
-        '18': '4.5rem'
+        18: '4.5rem',
+        22: '5.5rem',
+        26: '6.5rem',
+        30: '7.5rem',
+        34: '8.5rem',
+        38: '9.5rem',
+        42: '10.5rem'
+      },
+      boxShadow: {
+        soft: '0 20px 45px -20px rgba(249, 115, 22, 0.35)'
       }
     }
   },

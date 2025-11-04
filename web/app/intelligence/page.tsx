@@ -1,48 +1,41 @@
-import Link from 'next/link';
+import { Card } from '@/components/Card';
 
-const intelligenceCards = [
+const cards = [
   {
-    title: 'NCCN',
-    description: 'National Comprehensive Cancer Network guidelines distilled into actionable insights.',
-    href: '/intelligence/nccn'
+    title: 'Clinical Evidence Graph',
+    description:
+      'Surface curated oncology literature, practice-changing trials, and biomarker insights to support every care decision.'
   },
   {
-    title: 'ASCO',
-    description: 'American Society of Clinical Oncology recommendations summarized for rapid review.',
-    href: '/intelligence/asco'
+    title: 'Tumor Board Navigator',
+    description:
+      'Coordinate multidisciplinary workflows with shared agendas, structured case summaries, and role-based collaboration.'
   },
   {
-    title: 'ESMO',
-    description: 'European Society for Medical Oncology perspectives on global standards of care.',
-    href: '/intelligence/esmo'
-  },
-  {
-    title: 'PubMed Central',
-    description: 'Peer-reviewed literature, surfaced via embeddings-aware semantic search.',
-    href: '/intelligence/pubmed-central'
+    title: 'Patient Journey Signals',
+    description:
+      'Monitor adherence, toxicity, and quality-of-life trends across cohorts to unlock proactive interventions.'
   }
 ];
 
 export default function IntelligencePage() {
   return (
-    <section className="space-y-10">
-      <div className="space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Intelligence Sources
+    <main className="mx-auto max-w-6xl px-6 py-26 lg:px-12">
+      <header className="space-y-6 pb-18">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-600">Intelligence</p>
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Operate with clarity across every patient journey.
         </h1>
-        <p className="max-w-2xl text-base text-slate-500">
-          Navigate our curated oncology sources. Each card will expand into focused workspaces as the
-          platform evolves.
+        <p className="max-w-3xl text-lg text-slate-600">
+          Karkinos Intelligence harmonizes guidelines, research, and real-world evidence to ensure each patient
+          receives timely and precise interventions.
         </p>
-      </div>
-      <div className="card-grid">
-        {intelligenceCards.map((card) => (
-          <Link key={card.title} href={card.href} className="card">
-            <h2 className="card-title">{card.title}</h2>
-            <p className="card-description">{card.description}</p>
-          </Link>
+      </header>
+      <section className="grid gap-10 md:grid-cols-2">
+        {cards.map(({ title, description }) => (
+          <Card key={title} title={title} description={description} emptyState="Connect or upload guidelines" />
         ))}
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
